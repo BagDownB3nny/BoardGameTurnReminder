@@ -9,7 +9,7 @@ const bot = new TelegramBot(token, { polling: true });
 const groupId = '-4282758428';
 
 const app = express();
-const port = 26950;
+const port = process.env.PORT;
 
 // routes
 
