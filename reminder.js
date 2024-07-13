@@ -31,9 +31,6 @@ function sendMessageToGroup(player) {
     });
 }
 
-// Example: Send a message to the group every 10 seconds
-sendMessageToGroup('I HAVE NO POINTS');
-
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
   });
