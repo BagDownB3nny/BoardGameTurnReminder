@@ -15,13 +15,13 @@ const port = process.env.PORT;
 
 app.post('/remind', (req, res) => {
     console.log(req);
-    sendMessageToGroup(req.query.player);
+    sendMessageToGroup(req.query.player, req.query.url);
     res.send('Message sent to group!');
   });
 
 // Function to send a message to the group chat
-function sendMessageToGroup(player) {
-    const message = `It is ${player}'s turn!`;
+function sendMessageToGroup(player, url) {
+    const message = `It is ${player}'s turn! \n\nPlease make your move at: ${url}`;
   bot.sendMessage(groupId, message)
     .then(() => {
       console.log('Message sent successfully');
