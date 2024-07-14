@@ -6,7 +6,7 @@ const token = '7346799257:AAHno0dRjsRNsXurqe7HygIpxbQJYm0K5uk';
 const bot = new TelegramBot(token, { polling: true });
 
 // Replace 'YOUR_GROUP_CHAT_ID' with your actual group chat ID
-const groupId = '-4282758428';
+const groupId = '-4277270175';
 
 const app = express();
 const port = process.env.PORT;
