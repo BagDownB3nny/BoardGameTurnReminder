@@ -39,5 +39,5 @@ app.listen(port, () => {
 
 function sendMessageToGroupEveryHour(player, url) {
   sendMessageToGroup(player, url);
-  timerId = setTimeout(sendMessageToGroupEveryHour(player, url), 2);
+  timerId = setTimeout(sendMessageToGroupEveryHour(player, url), 3600000);
 }
