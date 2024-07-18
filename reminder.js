@@ -10,12 +10,14 @@ const groupId = '-4277270175';
 
 const app = express();
 const port = process.env.PORT;
+let timerId;
 
 // routes
 
 app.post('/remind', (req, res) => {
     console.log(req);
-    sendMessageToGroup(req.query.player, req.query.url);
+    clearTimeout(timerId);
+    sendMessageToGroupEveryHour(req.query.player, req.query.url);
     res.send('Message sent to group!');
   });
 
@@ -34,3 +36,8 @@ function sendMessageToGroup(player, url) {
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
   });
+
+function sendMessageToGroupEveryHour(player, url) {
+  sendMessageToGroup(player, url);
+  timerId = setTimeout(sendMessageToGroupEveryHour(player, url), 2);
+}
