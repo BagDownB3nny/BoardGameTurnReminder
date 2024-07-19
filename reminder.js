@@ -11,6 +11,7 @@ const groupId = '-4277270175';
 const app = express();
 const port = process.env.PORT;
 let timerId;
+let staggerTimerId;
 let mute = false;
 
 // routes
@@ -18,7 +19,8 @@ let mute = false;
 app.post('/remind', (req, res) => {
     console.log(req);
     clearTimeout(timerId);
-    sendMessageToGroupEveryHour(req.query.player, req.query.url);
+    clearTimeout(staggerTimerId);
+    staggerTimerId = setTimeout(() => sendMessageToGroup(req.query.player, req.query.url), 1000);
     res.send('Message sent to group!');
   });
 
@@ -31,6 +33,7 @@ bot.onText(/\/undiam/, (msg) => {
   bot.sendMessage(groupId, "Yessir");
   mute = false;
 });
+
 
 
 // Function to send a message to the group chat
