@@ -11,6 +11,7 @@ const groupId = '-4277270175';
 const app = express();
 const port = process.env.PORT;
 let timerId;
+let mute = false;
 
 // routes
 
@@ -21,9 +22,23 @@ app.post('/remind', (req, res) => {
     res.send('Message sent to group!');
   });
 
+bot.onText(/\/diam/, (msg) => {
+  bot.sendMessage(groupId, "Yessir");
+  mute = true;
+});
+
+bot.onText(/\/undiam/, (msg) => {
+  bot.sendMessage(groupId, "Yessir");
+  mute = false;
+});
+
+
 // Function to send a message to the group chat
 function sendMessageToGroup(player, url) {
-    const message = `It is ${player}'s turn! \n\nPlease make your move at: ${url}`;
+  if (mute) {
+    return;
+  }
+  const message = `It is ${player}'s turn! \n\nPlease make your move at: ${url}`;
   bot.sendMessage(groupId, message)
     .then(() => {
       console.log('Message sent successfully');
