@@ -55,6 +55,13 @@ app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
   });
 
+function keepAlive() {
+    setTimeout(keepAlive, 40000);
+}
+
+keepAlive();
+    
+
 function sendMessageToGroupEveryHour(player, url) {
   sendMessageToGroup(player, url);
   timerId = setTimeout(() => sendMessageToGroupEveryHour(player, url), 3600000);
