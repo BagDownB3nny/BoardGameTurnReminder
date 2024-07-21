@@ -56,7 +56,9 @@ app.listen(port, () => {
   });
 
 function keepAlive() {
+    console.log("Staying alive");
     setTimeout(keepAlive, 40000);
+    
 }
 
 keepAlive();
