@@ -52,6 +52,7 @@ function sendMessageToGroup(player, url) {
 }
 
 app.listen(port, () => {
+    keepAlive();
     console.log(`Server is listening on port ${port}`);
   });
 
@@ -60,8 +61,6 @@ function keepAlive() {
     setTimeout(keepAlive, 40000);
     
 }
-
-keepAlive();
     
 
 function sendMessageToGroupEveryHour(player, url) {
