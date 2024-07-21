@@ -20,7 +20,7 @@ app.post('/remind', (req, res) => {
     console.log(req);
     clearTimeout(timerId);
     clearTimeout(staggerTimerId);
-    staggerTimerId = setTimeout(() => sendMessageToGroup(req.query.player, req.query.url), 1000);
+    staggerTimerId = setTimeout(() => sendMessageToGroupEveryHour(req.query.player, req.query.url), 1000);
     res.send('Message sent to group!');
   });
 
